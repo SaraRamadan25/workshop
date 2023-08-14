@@ -24,13 +24,5 @@ Route::get('articles/{article}/edit',[ArticleController::class,'edit'])->name('a
 Route::patch('articles/{article}',[ArticleController::class,'update'])->name('articles.update');
 Route::delete('articles/{article}',[ArticleController::class,'destroy'])->name('articles.destroy');
 
-/*Route::get('/download',function (){
-   return Excel::download(new ArticlesExport(),'articles.xlsx');
-});*/
 
-// if we wanna download the file on the disk
 
-Route::get('/download',function (){
-    Excel::store(new ArticlesExport(),'articles.csv');
-    return 'done';
-});
