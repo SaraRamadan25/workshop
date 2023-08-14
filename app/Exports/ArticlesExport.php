@@ -3,16 +3,18 @@
 namespace App\Exports;
 
 use App\Models\Article;
-use Maatwebsite\Excel\Concerns\FromCollection;
+use Maatwebsite\Excel\Concerns\FromQuery;
 
-class ArticlesExport implements FromCollection
+class ArticlesExport implements FromQuery
 {
-    /**
-    * @return \Illuminate\Support\Collection
-    */
-    public function collection()
+
+    // FromQuery instead of FromCollection for better performance
+
+    public function query()
     {
         // we can put here any query we want
         return Article::all();
     }
+
+
 }
