@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\ArticlesExport;
 use App\Http\Requests\ArticleRequest;
 use App\Models\Article;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ArticleController extends Controller
 {
@@ -63,5 +65,7 @@ class ArticleController extends Controller
         $article->delete();
         return redirect()->route('articles.index');
     }
+
+
 
 }

@@ -1,8 +1,10 @@
 <?php
 
+use App\Exports\ArticlesExport;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
+use Maatwebsite\Excel\Facades\Excel;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,3 +23,14 @@ Route::get('articles/{article}',[ArticleController::class,'show'])->name('articl
 Route::get('articles/{article}/edit',[ArticleController::class,'edit'])->name('articles.edit');
 Route::patch('articles/{article}',[ArticleController::class,'update'])->name('articles.update');
 Route::delete('articles/{article}',[ArticleController::class,'destroy'])->name('articles.destroy');
+
+/*Route::get('/download',function (){
+   return Excel::download(new ArticlesExport(),'articles.xlsx');
+});*/
+
+// if we wanna download the file on the disk
+
+Route::get('/download',function (){
+    Excel::store(new ArticlesExport(),'articles.csv');
+    return 'done';
+});

@@ -22,6 +22,7 @@ class ArticleFactory extends Factory
             'title'=>fake()->title(),
             'description'=>fake()->sentence(7),
             'category_id'=>Category::factory(),
+            'image'=>fake()->imageUrl(),
             'worker_id'=>Worker::factory(),
         ];
     }
